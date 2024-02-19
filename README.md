@@ -25,6 +25,8 @@ To edit this repository in MakeCode.
 * Report Bugs please, so they can be fixed for 0.111
 
 * Project Roadmap
+* Original release - 0.11 (19 Feb, 14:26 GMT)
+* 0.1101 (19th Feb, 17:56 GMT)
 * 0.111 - By Mid March
 * 0.12 - By Mid April
   
