@@ -24,7 +24,10 @@ To edit this repository in MakeCode.
 * Microbit V1 is unlikely to get 0.12 (If it does, it will be a cut down version due to lack of storage)
 * Report Bugs please, so they can be fixed for 0.111
 
-#### Metadata (used for search, rendering)
+* Project Roadmap
+* 0.111 - By Mid March
+* 0.12 - By Mid April
+  
+* V1 will have no support after April, as there is not enough storage (256KB isn't enough)
 
-* for PXT/microbit
-<script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
+
