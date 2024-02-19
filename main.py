@@ -24,7 +24,7 @@ def on_button_pressed_a():
             time = "" + str(hourcalib) + ":" + ("" + str(minutecalib))
             if hourcalib == 24:
                 hourcalib = 0
-            basic.show_string(time)
+            basic.show_string(time, 30)
         if appID % 7 == 6:
             appID += 1
         if appID % 7 == 5:
@@ -310,10 +310,10 @@ input.on_button_pressed(Button.A, on_button_pressed_a)
 def on_button_pressed_ab():
     global appID, appno
     if appID == -100:
-        basic.show_string(time)
+        basic.show_string(time, 80)
         appID = 0
     if appID == 0:
-        basic.show_string(time)
+        basic.show_string(time, 80)
     if appno != 0:
         appno = 0
         appID = 1
@@ -326,12 +326,19 @@ def on_button_pressed_b():
         time = "" + str(hourcalib) + ":" + ("" + str(minutecalib))
         if minutecalib == 60:
             minutecalib = 0
-        basic.show_string(time)
+        basic.show_string(time, 30)
     if appID == 0:
         appID = -1
     if appID % 7 == 1:
         appno = 1
-        appID = 50
+        appID = 51
+        basic.show_leds("""
+            # # . # #
+            # # # # #
+            # . . . #
+            # . . . #
+            # # # # #
+            """)
     if appID % 7 == 2:
         appno = 2
     if appID % 7 == 3:
@@ -339,12 +346,26 @@ def on_button_pressed_b():
         appID = 70
     if appID % 7 == 4:
         appno = 4
-        appID = 60
     if appID % 7 == 5:
         appno = 5
+        appID = 62
+        basic.show_leds("""
+            # # # # #
+            . . . # .
+            . . # . .
+            . # . . .
+            # . . . .
+            """)
     if appID % 7 == 0:
         appno = 6
-        appID = 80
+        appID = 81
+        basic.show_leds("""
+            # # # # #
+            # # . # #
+            # . # . #
+            # . . . #
+            # # # # #
+            """)
     if appno == 2:
         basic.show_string("" + str(walkingDistance) + "/" + ("" + str(runningDistance)))
     if appID == 50:
@@ -574,16 +595,13 @@ def on_gesture_shake():
     pass
 input.on_gesture(Gesture.SHAKE, on_gesture_shake)
 
-
 compplayedrps = 0
-stopwatchmin = 0
 _7sscore = 0
 _7stime = 0
 userplayedrps = 0
 elapsed = 0
 messageid = 0
 messagesymbol = 0
-dotscore = 0
 _7sstart = 0
 rps = 0
 timerstart = 0
@@ -591,30 +609,32 @@ rmessage6 = 0
 rmessage5 = 0
 rmessage4 = 0
 mincalibtimer = 0
-time = ""
 appno = 0
 stepcounter = 0
 runningDistance = 0
 walkingDistance = 0
 appID = 0
-sprite = 0
 rmessage3 = 0
 rmessage2 = 0
 rmessage1 = 0
 minutecalib = 0
 hourcalib = 0
-hourcalibtimer = 0
-runningDistanceMiles = 0
+stopwatchmin = 0
+time = ""
 walkingDistanceMiles = 0
+runningDistanceMiles = 0
+hourcalibtimer = 0
+dotscore = 0
+sprite = 0
+basic.show_string("ChampCo SmartWatch Beta.", 75)
 input.calibrate_compass()
 radio.set_group(109)
-basic.show_string("What is the time?")
+basic.show_string("What is the time?", 75)
 hourcalib = 0
 minutecalib = 0
 rmessage1 = 0
 rmessage2 = 0
 rmessage3 = 0
-sprite = 0
 appID = -100
 walkingDistance = 0
 runningDistance = 0
@@ -651,7 +671,7 @@ basic.forever(on_forever3)
 
 def on_forever4():
     if appID == 50:
-        basic.show_string(time)
+        basic.show_string(time, 80)
 basic.forever(on_forever4)
 
 def on_forever5():
@@ -661,23 +681,23 @@ basic.forever(on_forever5)
 def on_forever6():
     if appno == 4:
         if degrees > 0:
-            basic.show_string("" + str(degrees) + ":" + "N")
+            basic.show_string("" + str(degrees) + ":" + "N", 80)
         elif degrees > 22:
-            basic.show_string("" + str(degrees) + ":" + "NE")
+            basic.show_string("" + str(degrees) + ":" + "NE", 80)
         elif degrees > 67:
-            basic.show_string("" + str(degrees) + ":" + "E")
+            basic.show_string("" + str(degrees) + ":" + "E", 80)
         elif degrees > 112:
-            basic.show_string("" + str(degrees) + ":" + "SE")
+            basic.show_string("" + str(degrees) + ":" + "SE", 80)
         elif degrees > 157:
-            basic.show_string("" + str(degrees) + ":" + "S")
+            basic.show_string("" + str(degrees) + ":" + "S", 80)
         elif degrees > 202:
-            basic.show_string("" + str(degrees) + ":" + "SW")
+            basic.show_string("" + str(degrees) + ":" + "SW", 80)
         elif degrees > 247:
-            basic.show_string("" + str(degrees) + ":" + "W")
+            basic.show_string("" + str(degrees) + ":" + "W", 80)
         elif degrees > 292:
-            basic.show_string("" + str(degrees) + ":" + "NW")
+            basic.show_string("" + str(degrees) + ":" + "NW", 80)
         else:
-            basic.show_string("" + str(degrees) + ":" + "N")
+            basic.show_string("" + str(degrees) + ":" + "N", 80)
 basic.forever(on_forever6)
 
 def on_forever7():
@@ -685,7 +705,7 @@ def on_forever7():
     if stopwatchmin != 0 and stopwatchmin != 1:
         basic.pause(60000)
         stopwatchmin += -1
-    if stopwatchmin != 1:
+    if stopwatchmin = 1:
         basic.pause(60000)
         stopwatchmin += -1
         basic.show_leds("""
@@ -713,7 +733,7 @@ def on_forever9():
     global compplayedrps
     if appno == 40:
         compplayedrps = randint(1, 3)
-    if compplayedrps == userplayedrps and userplayerrps != 0:
+    if compplayedrps == userplayedrps and rps:
         basic.show_string("Draw")
     if compplayedrps == 1 and userplayedrps == 2 or (compplayedrps == 2 and userplayedrps == 3 or compplayedrps == 3 and userplayedrps == 1):
         basic.show_string("Win")
