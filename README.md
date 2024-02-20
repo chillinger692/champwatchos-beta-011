@@ -1,4 +1,5 @@
-
+V2 only
+For V1, click the master branch and switch to for V1
 > Open this page at [https://chillinger692.github.io/champwatchos-beta-011/](https://chillinger692.github.io/champwatchos-beta-011/)
 
 ## Use as Extension
@@ -20,9 +21,6 @@ To edit this repository in MakeCode.
 
 * The OS contains 2 games (3rd coming in beta 0.12), a message system with an inbox containing 3 message slots (Will add separate repo for V2 with 10 message slots and typing system), timer (will add sound effects for V2), stopwatch, Accurate Compass, a Pedometer (with walking and running distances) and a Time setup and view system.
 
-* For 0.12, A mini calculator, calendar and conversions (from km to miles for walking distance, and common other conversions)
-* Microbit V1 is unlikely to get 0.12 (If it does, it will be a cut down version due to lack of storage)
-* Report Bugs please, so they can be fixed for 0.111
 
 * Project Roadmap
 * Original release - 0.11 (19 Feb, 14:26 GMT)
