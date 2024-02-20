@@ -619,13 +619,13 @@ rmessage2 = 0
 rmessage1 = 0
 minutecalib = 0
 hourcalib = 0
-stopwatchmin = 0
-time = ""
-walkingDistanceMiles = 0
-runningDistanceMiles = 0
-hourcalibtimer = 0
-dotscore = 0
 sprite = 0
+dotscore = 0
+hourcalibtimer = 0
+runningDistanceMiles = 0
+walkingDistanceMiles = 0
+time = ""
+stopwatchmin = 0
 basic.show_string("ChampCo SmartWatch Beta.", 75)
 input.calibrate_compass()
 radio.set_group(109)
