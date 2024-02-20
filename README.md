@@ -30,6 +30,6 @@ To edit this repository in MakeCode.
 * 0.111 - By Mid March
 * 0.12 - By Mid April
   
-* V1 will have no support after April, as there is not enough storage (256KB isn't enough)
+* V1 uses different branch now (20th Feb 09:23 GMT), as the 16KB ram is inadequate for even 0.1101.
 
 
