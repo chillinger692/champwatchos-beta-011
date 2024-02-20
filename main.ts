@@ -408,6 +408,9 @@ input.onButtonPressed(Button.B, function () {
     }
     if (appID % 7 == 4) {
         appno = 4
+    }
+    if (appID % 7 == 5) {
+        appno = 5
         appID = 62
         basic.showLeds(`
             # # # # #
@@ -416,9 +419,6 @@ input.onButtonPressed(Button.B, function () {
             . # . . .
             # . . . .
             `)
-    }
-    if (appID % 7 == 5) {
-        appno = 5
     }
     if (appID % 7 == 0) {
         appno = 6
@@ -432,7 +432,7 @@ input.onButtonPressed(Button.B, function () {
             `)
     }
     if (appno == 2) {
-        basic.showString("" + walkingDistance + "/" + ("" + runningDistance))
+        basic.showString("" + Math.round(walkingDistance) + "/" + ("" + Math.round(runningDistance)))
     }
     if (appID == 50) {
         appno = 10
@@ -749,16 +749,14 @@ let rmessage2 = 0
 let rmessage1 = 0
 let minutecalib = 0
 let hourcalib = 0
-let sprite = 0
-let dotscore = 0
-let hourcalibtimer = 0
-let runningDistanceMiles = 0
-let walkingDistanceMiles = 0
-let time = ""
 let stopwatchmin = 0
+let time = ""
+let walkingDistanceMiles = 0
+let runningDistanceMiles = 0
+let hourcalibtimer = 0
+let dotscore = 0
+let sprite = 0
 basic.showString("ChampCo SmartWatch Beta.", 75)
-basic.pause(960)
-basic.pause(40)
 input.calibrateCompass()
 radio.setGroup(109)
 basic.showString("What is the time?", 75)
