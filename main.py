@@ -1,10 +1,60 @@
-def on_received_number(receivedNumber):
-    global rmessage1
-    rmessage1 = receivedNumber
-radio.on_received_number(on_received_number)
+compplayedrps = 0
+stopwatchmin = 0
+_7sscore = 0
+_7stime = 0
+userplayedrps = 0
+elapsed = 0
+runningDistance = 0
+walkingDistance = 0
+messagesymbol = 0
+_7sstart = 0
+rps = 0
+mincalibtimer = 0
+timerstart = 0
+minutecalib = 0
+hourcalib = 0
+appno = 0
+stepcounter = 0
+appID = 0
+time = ""
+basic.show_string("Champ Smart Watch OS", 40)
+input.calibrate_compass()
+radio.set_group(109)
+basic.show_string("What is the time?", 50)
+appID = -100
+stepcounter = 0
+appno = 0
+time = "" + str(hourcalib) + ":" + ("" + str(minutecalib))compplayedrps = 0
+stopwatchmin = 0
+_7sscore = 0
+_7stime = 0
+userplayedrps = 0
+elapsed = 0
+runningDistance = 0
+walkingDistance = 0
+messagesymbol = 0
+_7sstart = 0
+rps = 0
+mincalibtimer = 0
+timerstart = 0
+minutecalib = 0
+hourcalib = 0
+appno = 0
+stepcounter = 0
+appID = 0
+time = ""
+basic.show_string("Champ Smart Watch OS", 40)
+input.calibrate_compass()
+radio.set_group(109)
+basic.show_string("What is the time?", 50)
+appID = -100
+stepcounter = 0
+appno = 0
+time = "" + str(hourcalib) + ":" + ("" + str(minutecalib))
+
 
 def on_button_pressed_a():
-    global hourcalib, time, appID, timerstart, mincalibtimer, rps, _7stime, _7sscore, _7sstart, messagesymbol
+    global hourcalib, time, appID, timerstart, mincalibtimer, _7sstart, messagesymbol
     if appno == 0:
         if appID == -100:
             hourcalib += 1
@@ -13,7 +63,7 @@ def on_button_pressed_a():
                 hourcalib = 0
             basic.show_string(time, 20)
         if appID == 7:
-            appID += 1
+            appID += -6
         if appID == 6:
             appID += 1
             basic.show_leds("""
@@ -124,9 +174,6 @@ def on_button_pressed_a():
                 # # # . #
                 """)
     if appno == 40:
-        rps = 4
-        if rps == 0:
-            rps = 3
         if rps == 1:
             basic.show_leds("""
                 # # # # #
@@ -135,7 +182,6 @@ def on_button_pressed_a():
                 # . . . #
                 # # # # #
                 """)
-            rps = 0
         if rps == 2:
             basic.show_leds("""
                 . . . . .
@@ -144,9 +190,7 @@ def on_button_pressed_a():
                 . # # # .
                 . . . . .
                 """)
-            rps = 3
         if rps == 3:
-            rps = 2
             basic.show_leds("""
                 # # # . #
                 # . # # .
@@ -155,8 +199,6 @@ def on_button_pressed_a():
                 # # # . #
                 """)
     if appno == 42:
-        _7stime = 0
-        _7sscore = 0
         _7sstart = input.running_time()
         basic.show_icon(IconNames.CHESSBOARD)
     if appno == 6:
@@ -299,28 +341,27 @@ def on_button_pressed_ab():
 input.on_button_pressed(Button.AB, on_button_pressed_ab)
 
 def on_button_pressed_b():
-    global minutecalib, time, appID, appno, elapsed, mincalibtimer, userplayedrps, _7stime, _7sscore, sprite
+    global minutecalib, appID, appno, elapsed, mincalibtimer, userplayedrps, _7stime, _7sscore
     if appID == -100:
         minutecalib += 1
-        time = "" + str(hourcalib) + ":" + ("" + str(minutecalib))
         if minutecalib == 60:
             minutecalib = 0
         basic.show_string(time, 20)
     if appID == 0:
         appID = -1
-    if appID % 7 == 1:
+    if appID == 1:
         appno = 1
         appID = 50
-    if appID % 7 == 2:
+    if appID == 2:
         appno = 2
-    if appID % 7 == 3:
+    if appID == 3:
         appno = 3
-    if appID % 7 == 4:
+    if appID == 4:
         appno = 4
-    if appID % 7 == 5:
+    if appID == 5:
         appno = 5
         appID = 60
-    if appID % 7 == 0:
+    if appID == 0:
         appno = 6
         appID = 80
     if appno == 2:
@@ -335,6 +376,7 @@ def on_button_pressed_b():
         elapsed = input.running_time() - timerstart
         basic.show_number(int(elapsed))
     if appno == 12:
+        mincalibtimer = 0
         if mincalibtimer < 60:
             mincalibtimer += 1
     if appID == 60:
@@ -360,7 +402,7 @@ def on_button_pressed_b():
         _7sscore = 100 - abs(_7stime - 7000)
         basic.show_number(_7sscore)
     if appno == 41:
-        sprite = game.create_sprite(2, 2)
+        pass
     if appID == 70:
         appno = 30
     if appID == 71:
@@ -391,45 +433,70 @@ def on_button_pressed_b():
         radio.send_number(31)
 input.on_button_pressed(Button.B, on_button_pressed_b)
 
-def on_gesture_shake():
-    pass
-input.on_gesture(Gesture.SHAKE, on_gesture_shake)
+def on_received_number(receivedNumber):
+    if receivedNumber == 31:
+        basic.show_string("Cool")
+    if receivedNumber == 30:
+        basic.show_string("Wow")
+    if receivedNumber == 29:
+        basic.show_string("Hi")
+    if receivedNumber == 28:
+        basic.show_string("Hello")
+    if receivedNumber == 27:
+        basic.show_string("Zzz")
+    if receivedNumber == 26:
+        basic.show_leds("""
+            . . . . .
+            . # . # .
+            . . . . .
+            . # # # .
+            # . . . #
+            """)
+    if receivedNumber == 25:
+        basic.show_leds("""
+            . # . # .
+            . . . . .
+            . . . . .
+            . . . . .
+            # # # # #
+            """)
+    if receivedNumber == 24:
+        basic.show_leds("""
+            . # . # .
+            . . . . .
+            # # # # #
+            # . . . #
+            # . . . #
+            """)
+    if receivedNumber == 23:
+        basic.show_leds("""
+            . # . # .
+            . . . . .
+            # . . . #
+            # . . . #
+            # # # # #
+            """)
+    if receivedNumber == 22:
+        basic.show_string("How are you")
+    if receivedNumber == 21:
+        basic.show_leds("""
+            # # # # #
+            # # # # #
+            # # # # #
+            . . . # #
+            . . . # #
+            """)
+    if receivedNumber == 20:
+        basic.show_leds("""
+            . . . # #
+            . . . # #
+            # # # # #
+            # # # # #
+            # # # # #
+            """)
+radio.on_received_number(on_received_number)
 
-compplayedrps = 0
-stopwatchmin = 0
-sprite: game.LedSprite = None
-userplayedrps = 0
-elapsed = 0
-messagesymbol = 0
-_7sstart = 0
-_7sscore = 0
-_7stime = 0
-rps = 0
-timerstart = 0
-rmessage1 = 0
-mincalibtimer = 0
-appno = 0
-stepcounter = 0
-runningDistance = 0
-walkingDistance = 0
-appID = 0
-minutecalib = 0
-hourcalib = 0
-hourcalibtimer = 0
-time = ""
-basic.show_string("Champ Smart Watch OS", 40)
-input.calibrate_compass()
-radio.set_group(109)
-basic.show_string("What is the time?", 50)
-hourcalib = 0
-minutecalib = 0
-appID = -100
-walkingDistance = 0
-runningDistance = 0
-stepcounter = 0
-appno = 0
-time = "" + str(hourcalib) + ":" + ("" + str(minutecalib))
-mincalibtimer = 0
+
 
 def on_forever():
     global stepcounter, walkingDistance, runningDistance
@@ -453,7 +520,7 @@ def on_forever2():
 basic.forever(on_forever2)
 
 def on_forever3():
-    if appID == 50:
+    if appno == 10:
         basic.show_string(time)
 basic.forever(on_forever3)
 
@@ -528,66 +595,3 @@ def on_forever8():
                 stopwatchmin = mincalibtimer
             basic.show_number(stopwatchmin)
 basic.forever(on_forever8)
-
-def on_forever9():
-    if rmessage1 == 31:
-        basic.show_string("Cool")
-    if rmessage1 == 30:
-        basic.show_string("Wow")
-    if rmessage1 == 29:
-        basic.show_string("Hi")
-    if rmessage1 == 28:
-        basic.show_string("Hello")
-    if rmessage1 == 27:
-        basic.show_string("Zzz")
-    if rmessage1 == 26:
-        basic.show_leds("""
-            . . . . .
-            . # . # .
-            . . . . .
-            . # # # .
-            # . . . #
-            """)
-    if messagesymbol == 25:
-        basic.show_leds("""
-            . # . # .
-            . . . . .
-            . . . . .
-            . . . . .
-            # # # # #
-            """)
-    if rmessage1 == 24:
-        basic.show_leds("""
-            . # . # .
-            . . . . .
-            # # # # #
-            # . . . #
-            # . . . #
-            """)
-    if rmessage1 == 23:
-        basic.show_leds("""
-            . # . # .
-            . . . . .
-            # . . . #
-            # . . . #
-            # # # # #
-            """)
-    if rmessage1 == 22:
-        basic.show_string("How are you")
-    if rmessage1 == 21:
-        basic.show_leds("""
-            # # # # #
-            # # # # #
-            # # # # #
-            . . . # #
-            . . . # #
-            """)
-    if rmessage1 == 20:
-        basic.show_leds("""
-            . . . # #
-            . . . # #
-            # # # # #
-            # # # # #
-            # # # # #
-            """)
-basic.forever(on_forever9)
