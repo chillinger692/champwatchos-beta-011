@@ -26,11 +26,12 @@ To edit this repository in MakeCode.
 
 
 * Project Roadmap
-* Original release - 0.11 (19 Feb, 14:26 GMT)
-* 0.1101 (19th Feb, 17:56 GMT)
-* 0.111- (20th Feb, will be less buggy)
-* 0.12 - (Message System and calculator)- By Late March
+* Original release - 0.11 (19 Feb, 14:26 GMT) - Boots, gets memory error after time setup
+* 0.1101 (19th Feb, 17:56 GMT) - Boots, gets memory error on menu screen (Scroll 1)
+* 0.111- (20th Feb, will be less buggy) - Boots, memory error on menu screen (Scroll 2)- Apps haven't opened
+* 0.112- (21st Feb -13:17 GMT, hopefully will work(I can't test on V1 until 18:15 at the earliest), Includes message system)
+* 0.12 - (calculator)- By Late March
   
-* V1 will have no support after April, as there is not enough storage (256KB isn't enough)
+* V1 will have no support after April, as there is not enough RAM (16KB is painful)
 
 
